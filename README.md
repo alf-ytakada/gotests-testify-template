@@ -12,7 +12,7 @@ custom templates for [gotests](https://github.com/cweill/gotests)
   ```
   "go.generateTestsFlags": [
     "-template_dir",
-    "/path/to/gotests-testify-templates/templates"
+    "/path/to/gotests-testify-template/templates"
   ]
   ```
 
