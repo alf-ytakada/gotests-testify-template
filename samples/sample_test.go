@@ -31,8 +31,6 @@ func TestNoArgOneReturn(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			got := NoArgOneReturn()
 			assert.Equal(t, tt.want, got)
-			if true {
-			}
 		})
 	}
 }
@@ -48,14 +46,8 @@ func TestNoArgTwoReturn(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got, got1 := NoArgTwoReturn()
-
 			assert.Equal(t, tt.want, got)
-			if true {
-			}
-
 			assert.Equal(t, tt.want1, got1)
-			if true {
-			}
 		})
 	}
 }
@@ -72,16 +64,9 @@ func TestNoArgTwoAndErrReturn(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got, got1, err := NoArgTwoAndErrReturn()
-
 			assert.ErrorIs(t, err, tt.wantErr)
-
 			assert.Equal(t, tt.want, got)
-			if true {
-			}
-
 			assert.Equal(t, tt.want1, got1)
-			if true {
-			}
 		})
 	}
 }
@@ -130,8 +115,6 @@ func TestReturnWriter(t *testing.T) {
 			got := ReturnWriter()
 			// TODO: fix
 			assert.Equal(t, tt.want, got)
-			if true {
-			}
 		})
 	}
 }
@@ -164,8 +147,6 @@ func TestA_NoArgOneReturn(t *testing.T) {
 			a := A{}
 			got := a.NoArgOneReturn()
 			assert.Equal(t, tt.want, got)
-			if true {
-			}
 		})
 	}
 }
@@ -183,14 +164,8 @@ func TestA_NoArgTwoReturn(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			a := A{}
 			got, got1 := a.NoArgTwoReturn()
-
 			assert.Equal(t, tt.want, got)
-			if true {
-			}
-
 			assert.Equal(t, tt.want1, got1)
-			if true {
-			}
 		})
 	}
 }
@@ -209,16 +184,9 @@ func TestA_NoArgTwoAndErrReturn(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			a := A{}
 			got, got1, err := a.NoArgTwoAndErrReturn()
-
 			assert.ErrorIs(t, err, tt.wantErr)
-
 			assert.Equal(t, tt.want, got)
-			if true {
-			}
-
 			assert.Equal(t, tt.want1, got1)
-			if true {
-			}
 		})
 	}
 }

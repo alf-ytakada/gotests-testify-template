@@ -61,31 +61,23 @@ func {{.TestName}}(t *testing.T) {
 					{{Param .}} := &bytes.Buffer{}
 				{{- end}}
 			{{- end}}
-			{{- if and (not .OnlyReturnsError) (not .OnlyReturnsOneValue) }}
+			{{- if (.OnlyReturnsError) }}
+				err := {{template "call" $f}}
+			{{- else}}
 				{{template "results" $f}} {{template "call" $f}}
 			{{- end}}
 			{{- if .ReturnsError}}
-				{{if .OnlyReturnsError}} err := {{template "call" $f}} {{end}}
 				assert.ErrorIs(t, err, tt.wantErr)
 			{{- end}}
 			{{- range .TestResults}}
 				{{- if .IsWriter}}
-					{{if $f.OnlyReturnsOneValue}}{{Got .}} := {{template "inline" $f}}{{end}}
 					// TODO: fix
 					assert.Equal(t, tt.{{Want .}}, {{Got .}})
-					if true {
 				{{- else if .IsBasicType}}
-					{{if $f.OnlyReturnsOneValue}}{{Got .}} := {{template "inline" $f}}{{end}}
 					assert.Equal(t, tt.{{Want .}}, {{Got .}})
-					if true {
 				{{- else}}
-					{{if $f.OnlyReturnsOneValue}}{{Got .}} := {{template "inline" $f}} {{end}}
 					assert.Equal(t, tt.{{Want .}}, {{Got .}})
-					if true {
-					//if diff := cmp.Diff( tt.{{Want .}}, {{Got .}}); diff != "" {
-					//	t.Errorf("{{template "message" $f}} {{if $f.ReturnsMultiple}}{{Got .}} {{end}}mismatch (-want +got) = \n%s", {{template "inputs" $f}} diff)
 				{{- end}}
-				}
 			{{- end}}
 		{{- if .Subtests }} }) {{- end -}}
 	}
